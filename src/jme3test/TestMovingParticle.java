@@ -44,6 +44,7 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.material.Material;
 import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
+import com.jme3.vr.app.DualCamAppState;
 import com.jme3.vr.osvr.app.state.OsvrAppState;
 
 /**
@@ -90,6 +91,9 @@ public class TestMovingParticle extends SimpleApplication {
         }, "setNum");
         
         inputManager.addMapping("setNum", new KeyTrigger(KeyInput.KEY_SPACE));
+        
+        DualCamAppState camAppState = new DualCamAppState(settings.getWidth() / 2, settings.getHeight(), rootNode);
+        stateManager.attach(camAppState);
         
         OsvrAppState osvrAppState = new OsvrAppState(rootNode);
         stateManager.attach(osvrAppState);

@@ -14,6 +14,7 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
 import com.jme3.system.AppSettings;
+import com.jme3.vr.app.DualCamAppState;
 import com.jme3.vr.osvr.app.state.OsvrAppState;
 import java.util.List;
 
@@ -67,6 +68,9 @@ public class CardboardStarTravel extends SimpleApplication{
         light.setSpotOuterAngle(FastMath.HALF_PI-0.01f);
         stars.addLight(light);
         
+        DualCamAppState camAppState = new DualCamAppState(settings.getWidth() / 2, settings.getHeight(), rootNode);
+        stateManager.attach(camAppState);
+        
         OsvrAppState osvrAppState = new OsvrAppState(rootNode);
         stateManager.attach(osvrAppState);
     }
@@ -80,7 +84,7 @@ public class CardboardStarTravel extends SimpleApplication{
         List<Spatial> starList = stars.getChildren();
         
         for(Spatial s: starList){
-            s.move(0, 0, .4f);
+            s.move(0, 0, .25f);
             if(s.getWorldTranslation().z  > maxDistance){
                 s.setLocalTranslation(FastMath.nextRandomFloat() * 100 - 50, FastMath.nextRandomFloat() * 100 - 50, -maxDistance);
             }
