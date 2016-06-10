@@ -99,7 +99,7 @@ public class TestJaime extends SimpleApplication {
         rootNode.attachChild(observer);
 //        cam.setLocation(observer.getLocalTranslation());
         
-        DualCamAppState camAppState = new DualCamAppState(rootNode);
+        DualCamAppState camAppState = new DualCamAppState(settings.getWidth() / 2, settings.getHeight(), rootNode);
         stateManager.attach(camAppState);
         OsvrAppState osvrAppState = new OsvrAppState(rootNode);
         osvrAppState.setObserver(observer);
